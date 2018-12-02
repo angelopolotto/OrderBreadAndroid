@@ -19,7 +19,7 @@ android {
             buildConfigField "String", "SERVER_URL", '"http://localhost"'
         }
         debug {
-            buildConfigField "String", "SERVER_URL", '"http://localhost"'
+            buildConfigField "String", "SERVER_URL", '"http://192.168.15.8:3000"'
         }
     }
 }
