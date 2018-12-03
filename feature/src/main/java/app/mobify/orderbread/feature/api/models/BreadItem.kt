@@ -2,6 +2,8 @@ package app.mobify.orderbread.feature.api.models
 
 import java.math.BigDecimal
 
+
+
 data class BreadItem(
     val allergic: String,
     val combinations: String,
