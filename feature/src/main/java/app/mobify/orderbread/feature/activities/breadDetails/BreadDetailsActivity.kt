@@ -1,8 +1,6 @@
 package app.mobify.orderbread.feature.activities.breadDetails
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import app.mobify.orderbread.feature.R
 import app.mobify.orderbread.feature.activities.base.BaseActivity
 import app.mobify.orderbread.feature.api.models.BreadItem
@@ -40,5 +38,15 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
 
     override fun showDetails(bread: BreadItem) {
         actionBar.title = bread.name
+//
+//        var pages = intArrayOf(
+//            R.layout.page_inicio_01,
+//            R.layout.page_inicio_02,
+//            R.layout.page_inicio_03,
+//            R.layout.page_inicio_04,
+//            R.layout.page_inicio_05
+//        )
+//
+//        cdIndicator.configureViewPager(vpImages, BreadDetailsPagerAdapter(this, pages), pages)
     }
 }
