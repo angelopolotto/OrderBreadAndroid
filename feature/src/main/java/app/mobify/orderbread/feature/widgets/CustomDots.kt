@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
-import app.mobify.orderbread.feature.R
+import app.mobify.orderbread.R
 
 class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     @LayoutRes
@@ -39,7 +39,7 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
             override fun onPageScrollStateChanged(state: Int) {}
         })
 
-        viewPager.setOnClickListener { v -> }
+//        viewPager.setOnClickListener { v -> }
 
         viewPager.currentItem = 0
 
@@ -65,7 +65,7 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
                 resources.getDimension(R.dimen.margin_start_dots).toInt(), 0
             )
 
-            dots!![i]!!.setOnTouchListener { v, event ->
+            dots!![i]!!.setOnTouchListener { _, event ->
                 viewPager!!.currentItem = i
                 true
             }
