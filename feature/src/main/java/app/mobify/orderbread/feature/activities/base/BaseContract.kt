@@ -1,4 +1,4 @@
-package app.mobify.orderbread.feature.base
+package app.mobify.orderbread.feature.activities.base
 
 interface BaseContract {
     interface View {

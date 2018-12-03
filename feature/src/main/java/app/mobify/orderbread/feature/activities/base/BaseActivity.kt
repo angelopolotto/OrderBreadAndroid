@@ -1,9 +1,8 @@
-package app.mobify.orderbread.feature.base
+package app.mobify.orderbread.feature.activities.base
 
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
-import android.support.annotation.IdRes
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar

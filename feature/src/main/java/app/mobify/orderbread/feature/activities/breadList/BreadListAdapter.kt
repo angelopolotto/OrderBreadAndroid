@@ -1,4 +1,4 @@
-package app.mobify.orderbread.feature.breadList
+package app.mobify.orderbread.feature.activities.breadList
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

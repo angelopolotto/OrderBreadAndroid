@@ -2,4 +2,6 @@
 <resources>
     <string name="bread_list_item_thumb_desc">Imagem do pão</string>
     <string name="base_dialog_erro">Algo de errado aconteceu</string>
+    <string name="bread_list_title">Order Bread</string>
+    <string name="toolbar_back_desc">botão voltar</string>
 </resources>

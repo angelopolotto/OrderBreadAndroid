@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:background="@color/primaryColor"
+        android:id="@+id/tbDefault">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageButton
+                android:id="@+id/ibBack"
+                android:src="@mipmap/baseline_arrow_back_white_48"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/toolbar_back_desc"
+                style="@style/ImageButton"
+                android:layout_alignParentStart="true"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/tvToolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewToolbar"
+                tools:text="Activity Title"
+                android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+</android.widget.Toolbar>

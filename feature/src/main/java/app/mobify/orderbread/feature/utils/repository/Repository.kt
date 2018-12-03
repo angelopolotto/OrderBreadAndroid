@@ -1,8 +1,8 @@
-package app.mobify.orderbread.feature.repository
+package app.mobify.orderbread.feature.utils.repository
 
 import app.mobify.orderbread.feature.api.BreadApiService
 import app.mobify.orderbread.feature.api.models.BreadItem
-import app.mobify.orderbread.feature.base.BaseContract
+import app.mobify.orderbread.feature.activities.base.BaseContract
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

@@ -1,4 +1,4 @@
-package app.mobify.orderbread.feature.repository
+package app.mobify.orderbread.feature.utils.repository
 
 import app.mobify.orderbread.feature.api.models.BreadItem
 
