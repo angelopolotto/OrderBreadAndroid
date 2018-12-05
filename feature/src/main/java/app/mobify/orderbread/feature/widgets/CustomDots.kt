@@ -2,27 +2,24 @@ package app.mobify.orderbread.feature.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.annotation.LayoutRes
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import app.mobify.orderbread.R
 
 class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
-    @LayoutRes
-    internal var pages: IntArray? = null
     private var dotsCount: Int = 0
     private var dots: Array<ImageView?>? = null
     private var pagerAdapter: PagerAdapter? = null
     private var viewPager: ViewPager? = null
 
-    fun configureViewPager(viewPager: ViewPager, pagerAdapter: PagerAdapter, @LayoutRes pages: IntArray) {
+    fun configureViewPager(viewPager: ViewPager, pagerAdapter: PagerAdapter) {
         this.viewPager = viewPager
         this.pagerAdapter = pagerAdapter
-        this.pages = pages
 
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -39,8 +36,6 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
             override fun onPageScrollStateChanged(state: Int) {}
         })
 
-//        viewPager.setOnClickListener { v -> }
-
         viewPager.currentItem = 0
 
         setPageViewIndicator()
@@ -49,6 +44,9 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
     @SuppressLint("ClickableViewAccessibility")
     private fun setPageViewIndicator() {
         Log.d("###setPageViewIndicator", " : called")
+
+        this.gravity = Gravity.CENTER
+
         dotsCount = pagerAdapter!!.count
         dots = arrayOfNulls(dotsCount)
 

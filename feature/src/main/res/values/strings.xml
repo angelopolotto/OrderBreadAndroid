@@ -4,4 +4,5 @@
     <string name="base_dialog_erro">Algo de errado aconteceu</string>
     <string name="bread_list_title">Order Bread</string>
     <string name="toolbar_back_desc">botão voltar</string>
+    <string name="page_bread_img_desc">foto do pão</string>
 </resources>

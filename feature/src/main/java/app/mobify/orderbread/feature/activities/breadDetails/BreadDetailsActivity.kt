@@ -6,6 +6,7 @@ import app.mobify.orderbread.feature.activities.base.BaseActivity
 import app.mobify.orderbread.feature.api.models.BreadItem
 import app.mobify.orderbread.feature.utils.`super`.MemStore
 import app.mobify.orderbread.feature.utils.repository.Repository
+import kotlinx.android.synthetic.main.activity_bread_details.*
 import org.koin.android.ext.android.inject
 
 class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
@@ -38,15 +39,7 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
 
     override fun showDetails(bread: BreadItem) {
         actionBar.title = bread.name
-//
-//        var pages = intArrayOf(
-//            R.layout.page_inicio_01,
-//            R.layout.page_inicio_02,
-//            R.layout.page_inicio_03,
-//            R.layout.page_inicio_04,
-//            R.layout.page_inicio_05
-//        )
-//
-//        cdIndicator.configureViewPager(vpImages, BreadDetailsPagerAdapter(this, pages), pages)
+
+        cdIndicator.configureViewPager(vpImages, BreadDetailsPagerAdapter(this, bread.images))
     }
 }

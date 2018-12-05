@@ -3,12 +3,11 @@ package app.mobify.orderbread.feature.activities.base
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
-import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
-import app.mobify.orderbread.R.color.textBlack
+import app.mobify.orderbread.R.color.textPrimary
 import app.mobify.orderbread.feature.R
 
 
@@ -30,8 +29,8 @@ abstract class BaseActivity : Activity(), BaseContract.View {
 
         dialog.show()
 
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, textBlack))
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, textBlack))
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, textPrimary))
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, textPrimary))
     }
 
     override fun showProgress() {

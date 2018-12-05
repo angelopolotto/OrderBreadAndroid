@@ -6,20 +6,23 @@
         <item name="android:colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="android:colorAccent">@color/accentColor</item>
         <item name="android:elevation">@dimen/elevation_default</item>
-        <item name="android:textViewStyle">@style/TextViewDefault</item>
+        <item name="android:textViewStyle">@style/TextViewPrimary</item>
         <item name="android:buttonStyle">@style/ButtonDefault</item>
     </style>
 
-    <style name="TextViewDefault" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/textBlack</item>
-        <item name="android:textSize">@dimen/text_default</item>
+    <style name="TextViewTitle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textSize">@dimen/text_title</item>
     </style>
 
-    <style name="TextViewToolbar" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/textWhite</item>
-        <item name="android:textSize">@dimen/text_toolbar</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
+    <style name="TextViewPrimary" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textSize">@dimen/text_primary</item>
+    </style>
+
+    <style name="TextViewSecondary" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">@dimen/text_secondary</item>
     </style>
 
     <style name="ButtonDefault" parent="android:Widget.Button">
