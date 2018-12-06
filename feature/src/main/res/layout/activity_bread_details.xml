@@ -74,13 +74,13 @@
                 tools:text="Bacon ipsum dolor amet short ribs meatball hamburger, tongue ham hock beef frankfurter turducken. Hamburger tail ribeye tongue pork belly shankle sirloin strip steak rump tenderloin pastrami meatloaf meatball." />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Preço"
-                app:layout_constraintTop_toBottomOf="@+id/textView9"
-                tools:layout_editor_absoluteX="16dp" />
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Preço"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -122,14 +122,6 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="176dp"
-                tools:layout_editor_absoluteY="966dp" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -233,6 +225,26 @@
                 app:layout_constraintStart_toEndOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/textView16"
                 tools:text="Bacon ipsum dolor amet short ribs meatball hamburger, tongue ham hock beef frankfurter turducken." />
+
+            <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Tabela nutricional"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"/>
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
