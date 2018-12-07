@@ -26,6 +26,8 @@
     </style>
 
     <style name="ButtonDefault" parent="android:Widget.Button">
+        <item name="android:textSize">@dimen/text_primary</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:background">@color/primaryColor</item>
         <item name="android:textColor">@color/textWhite</item>
     </style>

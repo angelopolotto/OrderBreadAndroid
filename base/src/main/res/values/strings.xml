@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Order Bread</string>
+    <string name="bread_list_item_thumb_desc">Imagem do pão</string>
+    <string name="base_dialog_erro">Algo de errado aconteceu</string>
+    <string name="bread_list_title">Order Bread</string>
+    <string name="toolbar_back_desc">botão voltar</string>
+    <string name="page_bread_img_desc">foto do pão</string>
+    <string name="details_description">Descrição</string>
+    <string name="details_price">Preço</string>
+    <string name="details_combinations">Combina com</string>
+    <string name="details_flavor">Descrição do sabor</string>
+    <string name="details_dimensions">Dimensões</string>
+    <string name="details_durability">Durabilidade</string>
+    <string name="details_ingredients">Ingredientes</string>
+    <string name="details_alergics">Atenção alérgicos</string>
+    <string name="details_nutritional">Tabela nutricional</string>
+    <string name="details_nutritional_table_desc">Tabela contendo os valores</string>
+    <string name="details_price_value">R$ %s</string>
+    <string name="details_order">Encomendar</string>
 </resources>

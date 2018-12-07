@@ -7,8 +7,8 @@ import android.support.v4.content.ContextCompat
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
+import app.mobify.orderbread.R
 import app.mobify.orderbread.R.color.textPrimary
-import app.mobify.orderbread.feature.R
 
 
 abstract class BaseActivity : Activity(), BaseContract.View {

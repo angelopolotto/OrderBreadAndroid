@@ -2,6 +2,7 @@ package app.mobify.orderbread.feature.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
@@ -28,9 +29,9 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
             override fun onPageSelected(position: Int) {
                 Log.d("###onPageSelected, pos ", position.toString())
                 for (i in 0 until dotsCount) {
-                    dots!![i]!!.setImageDrawable(resources.getDrawable(R.drawable.nonselecteditem_dot))
+                    dots!![i]!!.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.nonselecteditem_dot))
                 }
-                dots!![position]!!.setImageDrawable(resources.getDrawable(R.drawable.selecteditem_dot))
+                dots!![position]!!.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.selecteditem_dot))
             }
 
             override fun onPageScrollStateChanged(state: Int) {}
@@ -52,7 +53,7 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
 
         for (i in 0 until dotsCount) {
             dots!![i] = ImageView(this.context)
-            dots!![i]!!.setImageDrawable(resources.getDrawable(R.drawable.nonselecteditem_dot))
+            dots!![i]!!.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.nonselecteditem_dot))
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -63,12 +64,12 @@ class CustomDots(context: Context, attrs: AttributeSet?) : LinearLayout(context,
                 resources.getDimension(R.dimen.margin_start_dots).toInt(), 0
             )
 
-            dots!![i]!!.setOnTouchListener { _, event ->
+            dots!![i]!!.setOnTouchListener { _, _ ->
                 viewPager!!.currentItem = i
                 true
             }
             this.addView(dots!![i], params)
         }
-        dots!![0]!!.setImageDrawable(resources.getDrawable(R.drawable.selecteditem_dot))
+        dots!![0]!!.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.selecteditem_dot))
     }
 }
