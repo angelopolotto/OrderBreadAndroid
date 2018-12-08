@@ -1,7 +1,7 @@
 package app.mobify.orderbread.feature.api
 
 import app.mobify.orderbread.feature.BuildConfig.SERVER_URL
-import app.mobify.orderbread.feature.api.models.BreadItem
+import app.mobify.orderbread.feature.api.models.Bread
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 interface BreadApiService {
     @GET("/breads")
-    fun breads(): Observable<ArrayList<BreadItem>>
+    fun breads(): Observable<ArrayList<Bread>>
 
     companion object {
         fun create(): BreadApiService {

@@ -4,25 +4,37 @@ import android.os.Bundle
 import app.mobify.orderbread.R.string
 import app.mobify.orderbread.feature.R
 import app.mobify.orderbread.feature.activities.base.BaseActivity
-import app.mobify.orderbread.feature.api.models.BreadItem
-import app.mobify.orderbread.feature.utils.`super`.MemStore
+import app.mobify.orderbread.feature.activities.login.LoginActivity
+import app.mobify.orderbread.feature.api.models.Bread
+import app.mobify.orderbread.feature.utils.memoryStore.MemoryStore
 import app.mobify.orderbread.feature.utils.repository.Repository
+import app.mobify.orderbread.feature.utils.sharedPrefs.SharedPref
+import app.mobify.orderbread.feature.utils.views.cutomStartActivityForResult
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_bread_details.*
 import org.koin.android.ext.android.inject
 
 class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
-    val repository: Repository by inject()
-    val presenter: BreadDetailsPresenter by inject()
-    val memStore: MemStore by inject()
+    override fun startLogin() {
+        cutomStartActivityForResult<LoginActivity>(99)
+    }
+
+    override fun addedToCart() {
+        onBackPressed()
+    }
+
+    private val repository: Repository by inject()
+    private val presenter: BreadDetailsPresenter by inject()
+    private val memoryStore: MemoryStore by inject()
+    private val sharedPref: SharedPref by inject()
 
     override fun onStart() {
         super.onStart()
-
         repository.base = this
         presenter.repository = repository
         presenter.view = this
-        presenter.memStore = memStore
+        presenter.memoryStore = memoryStore
+        presenter.sharedPref = sharedPref
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
@@ -37,9 +49,13 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bread_details)
+
+        bOrder.setOnClickListener {
+            presenter.orderBread()
+        }
     }
 
-    override fun showDetails(bread: BreadItem) {
+    override fun showDetails(bread: Bread) {
         actionBar.title = bread.name
         cdIndicator.configureViewPager(vpImages, BreadDetailsPagerAdapter(this, bread.images))
         tvName.text = bread.name

@@ -2,7 +2,7 @@ package app.mobify.orderbread.feature.api.models
 
 import java.math.BigDecimal
 
-data class BreadItem(
+data class Bread(
         val id: Int,
         val name: String,
         val thumbnail: String,

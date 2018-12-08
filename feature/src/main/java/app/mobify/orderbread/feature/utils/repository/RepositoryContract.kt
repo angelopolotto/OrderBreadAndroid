@@ -1,7 +1,7 @@
 package app.mobify.orderbread.feature.utils.repository
 
-import app.mobify.orderbread.feature.api.models.BreadItem
+import app.mobify.orderbread.feature.api.models.Bread
 
 interface RepositoryContract {
-    fun loadBreads(result: (breads: ArrayList<BreadItem>)->Unit)
+    fun loadBreads(result: (breads: ArrayList<Bread>)->Unit)
 }

@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.mobify.orderbread.feature.R
-import app.mobify.orderbread.feature.api.models.BreadItem
+import app.mobify.orderbread.feature.api.models.Bread
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.bread_list_item.view.*
 
 class BreadListAdapter(val context: Context,
-                       val items: ArrayList<BreadItem>,
-                       val onClick: (item: BreadItem) -> Unit): RecyclerView.Adapter<BreadListAdapter.BreadListHolder> (){
+                       val items: ArrayList<Bread>,
+                       val onClick: (item: Bread) -> Unit): RecyclerView.Adapter<BreadListAdapter.BreadListHolder> (){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreadListHolder {
         return BreadListHolder(LayoutInflater.from(context).inflate(R.layout.bread_list_item, parent, false))
     }

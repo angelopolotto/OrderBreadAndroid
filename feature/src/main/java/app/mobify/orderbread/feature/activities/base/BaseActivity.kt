@@ -20,10 +20,14 @@ abstract class BaseActivity : Activity(), BaseContract.View {
     }
 
     override fun showError(message: String) {
+        showError(message, null)
+    }
+
+    override fun showError(message: String, okCalback: (() -> Unit)?) {
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle(R.string.base_dialog_erro) // O Titulo da notificação
         alertDialog.setMessage(message) // a mensagem ou alerta
-        alertDialog.setPositiveButton("Ok") { _, _ -> }
+        alertDialog.setPositiveButton("Ok") { _, _ -> okCalback?.invoke() }
 
         val dialog = alertDialog.create()
 

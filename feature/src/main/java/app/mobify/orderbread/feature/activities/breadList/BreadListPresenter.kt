@@ -1,18 +1,17 @@
 package app.mobify.orderbread.feature.activities.breadList
 
-import app.mobify.orderbread.feature.api.models.BreadItem
-import app.mobify.orderbread.feature.utils.`super`.MemStore
-import app.mobify.orderbread.feature.utils.`super`.MemStoreContract
+import app.mobify.orderbread.feature.api.models.Bread
+import app.mobify.orderbread.feature.utils.memoryStore.MemoryStoreContract
 import app.mobify.orderbread.feature.utils.repository.RepositoryContract
 
 class BreadListPresenter
     : BreadListContract.Presenter {
     lateinit var view: BreadListContract.View
     lateinit var repository: RepositoryContract
-    lateinit var memStore: MemStoreContract
+    lateinit var memoryStore: MemoryStoreContract
 
-    override fun showDetailsBreads(bread: BreadItem) {
-        memStore.breadItem = bread
+    override fun showDetailsBreads(bread: Bread) {
+        memoryStore.bread = bread
         view.showDetails()
     }
 

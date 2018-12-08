@@ -17,4 +17,8 @@
     <string name="details_nutritional_table_desc">Tabela contendo os valores</string>
     <string name="details_price_value">R$ %s</string>
     <string name="details_order">Encomendar</string>
+    <string name="shared_pref_user_key">USER_KEY</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="login_error_code">Erro ao efetuar login, tente mais tarde. Código: %s</string>
+    <string name="shared_pref_cart_key">CART_KEY</string>
 </resources>

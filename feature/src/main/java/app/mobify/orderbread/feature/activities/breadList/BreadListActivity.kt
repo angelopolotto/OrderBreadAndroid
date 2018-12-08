@@ -3,23 +3,24 @@ package app.mobify.orderbread.feature.activities.breadList
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import app.mobify.orderbread.feature.R
+import app.mobify.orderbread.R.string
 import app.mobify.orderbread.feature.activities.base.BaseActivity
 import app.mobify.orderbread.feature.activities.breadDetails.BreadDetailsActivity
-import app.mobify.orderbread.feature.api.models.BreadItem
-import app.mobify.orderbread.feature.utils.`super`.MemStore
+import app.mobify.orderbread.feature.api.models.Bread
+import app.mobify.orderbread.feature.utils.memoryStore.MemoryStore
 import app.mobify.orderbread.feature.utils.repository.Repository
 import kotlinx.android.synthetic.main.activity_bread_list.*
 import org.koin.android.ext.android.inject
 
 class BreadListActivity : BaseActivity(), BreadListContract.View {
-    val repository: Repository by inject()
-    val presenter: BreadListPresenter by inject()
-    val memStore: MemStore by inject()
+    private val repository: Repository by inject()
+    private val presenter: BreadListPresenter by inject()
+    private val memoryStore: MemoryStore by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bread_list)
-        actionBar.title = getString(R.string.bread_list_title)
+        actionBar.title = getString(string.bread_list_title)
 
         rvBreads.layoutManager = GridLayoutManager(this, 2)
         progress = pbLoading
@@ -30,7 +31,7 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
 
         repository.base = this
         presenter.repository = repository
-        presenter.memStore = memStore
+        presenter.memoryStore = memoryStore
         presenter.view = this
 
         presenter.loadBreads()
@@ -41,7 +42,7 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
         repository.disposable?.dispose()
     }
 
-    override fun showBreads(breads: ArrayList<BreadItem>) {
+    override fun showBreads(breads: ArrayList<Bread>) {
         rvBreads.adapter = BreadListAdapter(this, breads) {
             presenter.showDetailsBreads(it)
         }
