@@ -6,9 +6,10 @@ interface BreadListContract {
     interface View {
         fun showBreads(breads: ArrayList<Bread>)
         fun showDetails()
+        fun showCart(total: Int)
     }
     interface Presenter {
-        fun loadBreads()
+        fun loadData()
         fun showDetailsBreads(bread: Bread)
     }
 }

@@ -20,7 +20,7 @@ class LoginPresenter: LoginContract.Presenter {
                         userFirebase.displayName ?: "Name not informed",
                         idToken
                     )
-                    sharedPref.saveLoginToken(user)
+                    sharedPref.saveUser(user)
                     view.loginSucceful()
                 } else {
                     view.loginError("Problem to receive the token")

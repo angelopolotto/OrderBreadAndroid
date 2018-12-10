@@ -26,13 +26,13 @@ class SharedPref : SharedPrefContract {
         this.gson = builder.create()
     }
 
-    override fun getLoginToken(): User? {
+    override fun getUser(): User? {
         return gson?.fromJson(
             sharedPref?.getString(activity.resources.getString(R.string.shared_pref_user_key), null),
             User::class.java)
     }
 
-    override fun saveLoginToken(user: User) {
+    override fun saveUser(user: User) {
         with (sharedPref?.edit()) {
             this?.putString(activity.resources.getString(R.string.shared_pref_user_key), gson?.toJson(user))
             this?.apply()
@@ -45,7 +45,12 @@ class SharedPref : SharedPrefContract {
         val cart: Cart?
         if (cartJson != null) {
             cart = gson?.fromJson(cartJson, Cart::class.java) ?: Cart(mutableListOf())
-            cart.breads.add(bread)
+            val breadAtCart = cart.breads.find { item -> item.id == bread.id }
+            if (breadAtCart != null) {
+                breadAtCart.quantity = breadAtCart.quantity + 1
+            } else {
+                cart.breads.add(bread)
+            }
         } else {
             cart = Cart(mutableListOf())
             cart.breads.add(bread)

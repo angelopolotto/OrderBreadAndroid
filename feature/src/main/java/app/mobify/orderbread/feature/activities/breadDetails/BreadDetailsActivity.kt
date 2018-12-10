@@ -1,5 +1,6 @@
 package app.mobify.orderbread.feature.activities.breadDetails
 
+import android.content.Intent
 import android.os.Bundle
 import app.mobify.orderbread.R.string
 import app.mobify.orderbread.feature.R
@@ -15,8 +16,9 @@ import kotlinx.android.synthetic.main.activity_bread_details.*
 import org.koin.android.ext.android.inject
 
 class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
+
     override fun startLogin() {
-        cutomStartActivityForResult<LoginActivity>(99)
+        cutomStartActivityForResult<LoginActivity>(LoginActivity.rcSignIn)
     }
 
     override fun addedToCart() {
@@ -31,6 +33,7 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
     override fun onStart() {
         super.onStart()
         repository.base = this
+        sharedPref.activity = this
         presenter.repository = repository
         presenter.view = this
         presenter.memoryStore = memoryStore
@@ -68,5 +71,13 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
         tvIngredients.text = bread.ingredients
         tvAllergic.text = bread.allergic
         Glide.with(this).load(bread.nutritional).into(ivNutritional)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == LoginActivity.rcSignIn) {
+            presenter.orderBread()
+        }
     }
 }

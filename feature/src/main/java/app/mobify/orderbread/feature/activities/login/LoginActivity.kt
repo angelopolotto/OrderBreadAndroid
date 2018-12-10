@@ -1,18 +1,21 @@
 package app.mobify.orderbread.feature.activities.login
 
-import android.content.Intent
-import com.firebase.ui.auth.AuthUI
-import java.util.*
-import com.google.firebase.auth.FirebaseAuth
 import android.app.Activity
+import android.content.Intent
 import app.mobify.orderbread.feature.R
 import app.mobify.orderbread.feature.activities.base.BaseActivity
 import app.mobify.orderbread.feature.utils.sharedPrefs.SharedPref
+import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
+import java.util.*
 
 class LoginActivity : BaseActivity(), LoginContract.View {
-    private val rcSignIn: Int = 99
+    companion object {
+        val rcSignIn: Int = 99
+    }
+
     private val presenter: LoginPresenter by inject()
     private val sharedPref: SharedPref by inject()
 
@@ -56,6 +59,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun onStart() {
         super.onStart()
+        sharedPref.activity = this
         presenter.sharedPref = sharedPref
         presenter.view = this
         presenter.start()

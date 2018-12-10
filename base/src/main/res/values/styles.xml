@@ -30,6 +30,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:background">@color/primaryColor</item>
         <item name="android:textColor">@color/textWhite</item>
+        <item name="android:height">40dp</item>
     </style>
 
     <style name="Ripple">

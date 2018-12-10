@@ -15,7 +15,7 @@ class BreadDetailsPresenter: BreadDetailsContract.Presenter {
     }
 
     override fun orderBread() {
-        if (sharedPref.getLoginToken() == null) {
+        if (sharedPref.getUser() == null) {
             view.startLogin()
         } else {
             sharedPref.addToCart(memoryStore.bread)
