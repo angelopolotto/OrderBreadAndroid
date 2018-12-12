@@ -12,7 +12,8 @@
     <application android:name=".OrderBreadAppication"
                  android:icon="@mipmap/ic_launcher"
                  android:allowBackup="true"
-                 android:fullBackupContent="true">
+                 android:fullBackupContent="true"
+                 android:theme="@style/AppTheme">
         <activity android:name=".activities.breadList.BreadListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
