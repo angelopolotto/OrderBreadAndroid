@@ -7,3 +7,8 @@ inline fun <reified T: Activity> Activity.cutomStartActivityForResult(requestCod
     val intent = Intent(this, T::class.java)
     startActivityForResult(intent, requestCode)
 }
+
+fun Activity.cutomStartActivity(cls: Class<out Any>) {
+    val intent = Intent(this, cls)
+    startActivity(intent)
+}

@@ -16,8 +16,10 @@ class LoginPresenter: LoginContract.Presenter {
                 val idToken = it.result!!.token
                 if (idToken != null) {
                     val user = User(
+                        userFirebase.uid,
                         userFirebase.email ?: "Email not informed",
                         userFirebase.displayName ?: "Name not informed",
+                        userFirebase.photoUrl.toString(),
                         idToken
                     )
                     sharedPref.saveUser(user)

@@ -2,6 +2,7 @@ package app.mobify.orderbreadandroid.activities.breadDetails
 
 import android.content.Intent
 import android.os.Bundle
+import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.activities.login.LoginActivity
 import app.mobify.orderbreadandroid.api.models.Bread
@@ -9,7 +10,6 @@ import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.repository.Repository
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPref
 import app.mobify.orderbreadandroid.utils.views.cutomStartActivityForResult
-import app.mobify.orderbreadandroid.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_bread_details.*
 import org.koin.android.ext.android.inject
@@ -32,7 +32,6 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
     override fun onStart() {
         super.onStart()
         repository.base = this
-        sharedPref.activity = this
         presenter.repository = repository
         presenter.view = this
         presenter.memoryStore = memoryStore
@@ -76,7 +75,7 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == LoginActivity.rcSignIn) {
-            presenter.orderBread()
+            presenter.orderBread(true)
         }
     }
 }

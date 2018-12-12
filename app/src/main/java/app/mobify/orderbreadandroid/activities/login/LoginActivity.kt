@@ -2,9 +2,9 @@ package app.mobify.orderbreadandroid.activities.login
 
 import android.app.Activity
 import android.content.Intent
+import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPref
-import app.mobify.orderbreadandroid.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -59,7 +59,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun onStart() {
         super.onStart()
-        sharedPref.activity = this
         presenter.sharedPref = sharedPref
         presenter.view = this
         presenter.start()

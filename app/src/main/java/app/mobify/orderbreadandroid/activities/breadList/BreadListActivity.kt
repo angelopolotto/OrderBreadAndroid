@@ -2,14 +2,17 @@ package app.mobify.orderbreadandroid.activities.breadList
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
+import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.activities.breadDetails.BreadDetailsActivity
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.repository.Repository
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPref
-import app.mobify.orderbreadandroid.R
+import app.mobify.orderbreadandroid.utils.views.cutomStartActivity
 import kotlinx.android.synthetic.main.activity_bread_list.*
+import kotlinx.android.synthetic.main.custom_image_button.view.*
 import org.koin.android.ext.android.inject
 
 class BreadListActivity : BaseActivity(), BreadListContract.View {
@@ -30,8 +33,9 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
     override fun onStart() {
         super.onStart()
 
+        cibCart.visibility = View.GONE
+
         repository.base = this
-        sharedPref.activity = this
         presenter.repository = repository
         presenter.memoryStore = memoryStore
         presenter.sharedPref = sharedPref
@@ -52,10 +56,16 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
     }
 
     override fun showDetails() {
-        startActivity(BreadDetailsActivity::class.java)
+        cutomStartActivity(BreadDetailsActivity::class.java)
     }
 
     override fun showCart(total: Int) {
+        cibCart.visibility = View.VISIBLE
+        cibCart.tvText.text = resources.getString(R.string.bread_list_cart_button, total)
+        cibCart.bClick.setOnClickListener { presenter.showCart() }
+    }
+
+    override fun showCartActivity() {
 
     }
 }

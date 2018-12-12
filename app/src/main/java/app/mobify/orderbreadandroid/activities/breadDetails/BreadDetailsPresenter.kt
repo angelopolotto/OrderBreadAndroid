@@ -14,10 +14,10 @@ class BreadDetailsPresenter: BreadDetailsContract.Presenter {
         view.showDetails(memoryStore.bread)
     }
 
-    override fun orderBread() {
-        if (sharedPref.getUser() == null) {
+    override fun orderBread(onActivityResult: Boolean) {
+        if (sharedPref.getUser() == null && !onActivityResult) {
             view.startLogin()
-        } else {
+        } else if (sharedPref.getUser() != null) {
             sharedPref.addToCart(memoryStore.bread)
             view.addedToCart()
         }

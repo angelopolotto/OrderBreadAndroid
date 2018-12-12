@@ -17,5 +17,5 @@ data class Bread(
     val allergic: String,
     val nutritional: String,
     val currency: String,
-    var quantity: Int = 1
+    var quantity: Int
 )

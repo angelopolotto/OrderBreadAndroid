@@ -28,9 +28,13 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     <app.mobify.orderbreadandroid.widgets.CustomImageButton
+            android:id="@+id/cibCart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"
+            app:cib_src="@mipmap/baseline_shopping_cart_white_48"
+            app:cib_text="@string/bread_list_cart_button"
+            app:cib_contentDescription="@string/bread_list_cart_button_ico_desc"/>
 </android.support.constraint.ConstraintLayout>

@@ -10,6 +10,6 @@ interface BreadDetailsContract {
     }
     interface Presenter {
         fun loadDetails()
-        fun orderBread()
+        fun orderBread(onActivityResult: Boolean = false)
     }
 }

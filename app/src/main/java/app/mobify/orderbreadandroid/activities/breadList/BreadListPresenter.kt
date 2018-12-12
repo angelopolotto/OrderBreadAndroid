@@ -8,6 +8,10 @@ import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPrefContract
 
 class BreadListPresenter
     : BreadListContract.Presenter {
+    override fun showCart() {
+        view.showCartActivity()
+    }
+
     lateinit var view: BreadListContract.View
     lateinit var repository: RepositoryContract
     lateinit var memoryStore: MemoryStoreContract

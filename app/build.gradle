@@ -61,9 +61,14 @@ dependencies {
     // Android Support
     implementation 'com.android.support:support-v4:27.1.1'
 
+//    // Firebase core
+//    implementation 'com.google.firebase:firebase-core:16.0.6'
+
     // Firebase crash reports
     implementation 'com.google.firebase:firebase-crash:16.2.1'
 
     // Firebase auth
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

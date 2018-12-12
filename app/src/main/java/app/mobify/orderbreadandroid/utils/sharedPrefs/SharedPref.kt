@@ -1,9 +1,6 @@
 package app.mobify.orderbreadandroid.utils.sharedPrefs
 
-import android.app.Activity
-import android.content.Context
 import android.content.SharedPreferences
-import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.api.models.Cart
 import app.mobify.orderbreadandroid.api.models.User
@@ -11,13 +8,11 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
 class SharedPref : SharedPrefContract {
-    private var sharedPref: SharedPreferences? = null
-    get() {
-        return activity.getPreferences(Context.MODE_PRIVATE)
-    }
-    lateinit var activity: Activity
+    var sharedPref: SharedPreferences? = null
 
     private var gson: Gson?
+    private val userKey = "USER_KEY"
+    private val cartKey = "CART_KEY"
 
     init {
         val builder = GsonBuilder()
@@ -25,21 +20,20 @@ class SharedPref : SharedPrefContract {
     }
 
     override fun getUser(): User? {
-        return gson?.fromJson(
-            sharedPref?.getString(activity.resources.getString(R.string.shared_pref_user_key), null),
+        val user = gson?.fromJson(
+            sharedPref?.getString(userKey, null),
             User::class.java)
+        return user
     }
 
     override fun saveUser(user: User) {
-        with (sharedPref?.edit()) {
-            this?.putString(activity.resources.getString(R.string.shared_pref_user_key), gson?.toJson(user))
-            this?.apply()
-        }
+        val edit = sharedPref?.edit()
+        edit?.putString(userKey, gson?.toJson(user))
+        edit?.apply()
     }
 
     override fun addToCart(bread: Bread) {
-        val cartJson = sharedPref?.getString(
-            activity.resources.getString(R.string.shared_pref_cart_key), null)
+        val cartJson = sharedPref?.getString(cartKey, null)
         val cart: Cart?
         if (cartJson != null) {
             cart = gson?.fromJson(cartJson, Cart::class.java) ?: Cart(mutableListOf())
@@ -47,23 +41,23 @@ class SharedPref : SharedPrefContract {
             if (breadAtCart != null) {
                 breadAtCart.quantity = breadAtCart.quantity + 1
             } else {
+                bread.quantity = 1
                 cart.breads.add(bread)
             }
         } else {
             cart = Cart(mutableListOf())
+            bread.quantity = 1
             cart.breads.add(bread)
         }
-        with (sharedPref?.edit()) {
-            this?.putString(
-                activity.resources.getString(R.string.shared_pref_cart_key),
-                gson?.toJson(cart))
-            this?.apply()
-        }
+        val edit = sharedPref?.edit()
+        edit?.putString(cartKey, gson?.toJson(cart))
+        edit?.apply()
     }
 
     override fun getCart(): Cart? {
-        return gson?.fromJson(sharedPref?.getString(
-            activity.resources.getString(R.string.shared_pref_cart_key), null),
+        val cart = gson?.fromJson(
+            sharedPref?.getString(cartKey, null),
             Cart::class.java)
+        return cart
     }
 }
