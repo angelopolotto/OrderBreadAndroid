@@ -28,6 +28,8 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
 
         rvBreads.layoutManager = GridLayoutManager(this, 2)
         progress = pbLoading
+
+        //todo adicionar botão no menu para acessar o perfil
     }
 
     override fun onStart() {

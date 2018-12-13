@@ -22,7 +22,7 @@
 
             <TextView
                     android:text="@string/checkout_resume"
-                    android:layout_width="288dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4"
                     android:layout_marginTop="20dp"

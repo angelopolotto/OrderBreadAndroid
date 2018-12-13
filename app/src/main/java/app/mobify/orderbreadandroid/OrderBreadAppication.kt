@@ -5,6 +5,7 @@ import android.content.Context
 import app.mobify.orderbreadandroid.activities.breadDetails.BreadDetailsPresenter
 import app.mobify.orderbreadandroid.activities.breadList.BreadListPresenter
 import app.mobify.orderbreadandroid.activities.cart.CartPresenter
+import app.mobify.orderbreadandroid.activities.checkout.CheckoutPresenter
 import app.mobify.orderbreadandroid.activities.login.LoginPresenter
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.repository.Repository
@@ -22,6 +23,7 @@ class OrderBreadAppication: Application() {
         single { BreadDetailsPresenter() }
         single { LoginPresenter() }
         single { CartPresenter() }
+        single { CheckoutPresenter() }
     }
 
     override fun onCreate(){
