@@ -67,4 +67,14 @@
         Você pode somente adicionar no máximo %d pães de cada tipo. 
         Isso acontece devido a nossa capacidade de atender as encomendas.
     </string>
+    <string name="checkout_resume">Resumo</string>
+    <string name="checkout_price_total">Total a ser pago</string>
+    <string name="checkout_price_total_value">R$ %s</string>
+    <string name="checkout_place_to_get_order">Local da retirada</string>
+    <string name="checkout_credit_card">Cartão de crédito</string>
+    <string name="checkout_order_date">Data do pedido</string>
+    <string name="checkout_date_order_value">%s às %s</string>
+    <string name="checkout_date_get_order">Previsão da retirada</string>
+    <string name="checkout_date_get_order_value">%s às %s</string>
+    <string name="checkout_pay">Pagar</string>
 </resources>
