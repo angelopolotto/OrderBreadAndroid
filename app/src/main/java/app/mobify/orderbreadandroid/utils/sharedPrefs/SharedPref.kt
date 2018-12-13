@@ -32,17 +32,32 @@ class SharedPref : SharedPrefContract {
         edit?.apply()
     }
 
-    override fun addToCart(bread: Bread) {
+    override fun addToCart(
+        bread: Bread, maxPerItem: Int, maxItemsCart: Int,
+        success: () -> Unit,
+        errorMaxPerItem: () -> Unit,
+        errorMaxItemsCart: () -> Unit
+    ) {
         val cartJson = sharedPref?.getString(cartKey, null)
         val cart: Cart?
         if (cartJson != null) {
             cart = gson?.fromJson(cartJson, Cart::class.java) ?: Cart(mutableListOf())
             val breadAtCart = cart.breads.find { item -> item.id == bread.id }
             if (breadAtCart != null) {
-                breadAtCart.quantity = breadAtCart.quantity + 1
+                if (breadAtCart.quantity < maxPerItem) {
+                    breadAtCart.quantity = breadAtCart.quantity + 1
+                } else {
+                    errorMaxPerItem()
+                    return
+                }
             } else {
-                bread.quantity = 1
-                cart.breads.add(bread)
+                if (cart.breads.size < maxItemsCart) {
+                    bread.quantity = 1
+                    cart.breads.add(bread)
+                } else {
+                    errorMaxItemsCart()
+                    return
+                }
             }
         } else {
             cart = Cart(mutableListOf())
@@ -52,6 +67,38 @@ class SharedPref : SharedPrefContract {
         val edit = sharedPref?.edit()
         edit?.putString(cartKey, gson?.toJson(cart))
         edit?.apply()
+        success()
+    }
+
+    override fun updateFromCart(bread: Bread) {
+        val cartJson = sharedPref?.getString(cartKey, null)
+        val cart: Cart?
+        if (cartJson != null) {
+            cart = gson?.fromJson(cartJson, Cart::class.java) ?: Cart(mutableListOf())
+            if (cart.breads.isNotEmpty()) {
+                val filtered = cart.breads.filter { it.id == bread.id }
+                filtered[0].quantity = bread.quantity
+
+                val edit = sharedPref?.edit()
+                edit?.putString(cartKey, gson?.toJson(cart))
+                edit?.apply()
+            }
+        }
+    }
+
+    override fun removeFromCart(bread: Bread) {
+        val cartJson = sharedPref?.getString(cartKey, null)
+        val cart: Cart?
+        if (cartJson != null) {
+            cart = gson?.fromJson(cartJson, Cart::class.java) ?: Cart(mutableListOf())
+            if (cart.breads.isNotEmpty()) {
+                val filtered = cart.breads.filter { it.id == bread.id }
+                cart.breads.remove(filtered[0])
+                val edit = sharedPref?.edit()
+                edit?.putString(cartKey, gson?.toJson(cart))
+                edit?.apply()
+            }
+        }
     }
 
     override fun getCart(): Cart? {

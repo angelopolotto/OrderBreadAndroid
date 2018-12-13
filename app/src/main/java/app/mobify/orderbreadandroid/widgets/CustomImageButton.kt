@@ -20,7 +20,7 @@ class CustomImageButton @JvmOverloads constructor(
         // Load the styled attributes and set their properties
         val typedArray = context.obtainStyledAttributes(
             attrs,
-            R.styleable.CustomImageButton, defStyleAttr, 0
+            R.styleable.CustomImageButton, defStyleAttr, defStyleRes
         )
 
         val src = typedArray?.getDrawable(R.styleable.CustomImageButton_cib_src)

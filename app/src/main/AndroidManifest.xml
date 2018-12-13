@@ -24,15 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name=".activities.breadDetails.BreadDetailsActivity"
-                android:label="@string/title_activity_login">
-        </activity>
+        <activity android:name=".activities.breadDetails.BreadDetailsActivity"/>
         <activity
                 android:name=".activities.login.LoginActivity"
-                android:label="@string/title_activity_login">
-        </activity>
-        <activity android:name=".activities.cart.CartActivity">
+                android:label="@string/login_title"/>
+        <activity
+                android:name=".activities.cart.CartActivity"
+                android:label="@string/cart_title"/>
+        <activity android:name=".activities.checkout.CheckoutActivity">
         </activity>
     </application>
 

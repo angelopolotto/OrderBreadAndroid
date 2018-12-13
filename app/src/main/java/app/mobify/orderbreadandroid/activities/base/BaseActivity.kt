@@ -36,4 +36,9 @@ abstract class BaseActivity : Activity(), BaseContract.View {
     override fun hideProgress() {
         progress?.visibility = GONE
     }
+
+    override fun onNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

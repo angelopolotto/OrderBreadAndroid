@@ -30,8 +30,10 @@ class BreadListPresenter
         cart = sharedPref.getCart()
 
         cart?.let {
-            val total = it.breads.fold(0) { sum, bread -> sum + bread.quantity }
-            view.showCart(total)
+            if (it.breads.isNotEmpty()) {
+                val total = it.breads.fold(0) { sum, bread -> sum + bread.quantity }
+                view.showCart(total)
+            }
         }
     }
 }

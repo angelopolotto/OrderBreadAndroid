@@ -18,8 +18,10 @@ class BreadDetailsPresenter: BreadDetailsContract.Presenter {
         if (sharedPref.getUser() == null && !onActivityResult) {
             view.startLogin()
         } else if (sharedPref.getUser() != null) {
-            sharedPref.addToCart(memoryStore.bread)
-            view.addedToCart()
+            sharedPref.addToCart(memoryStore.bread, memoryStore.maxPerItem, memoryStore.maxItemsCart,
+                success = { view.addedToCart() },
+                errorMaxPerItem = { view.errorMaxPerItem(memoryStore.maxPerItem) },
+                errorMaxItemsCart = { view.errorMaxItemsCart(memoryStore.maxItemsCart) })
         }
     }
 }

@@ -7,6 +7,8 @@ interface BreadDetailsContract {
         fun showDetails(bread: Bread)
         fun startLogin()
         fun addedToCart()
+        fun errorMaxPerItem(maxPerItem: Int)
+        fun errorMaxItemsCart(maxItemsCart: Int)
     }
     interface Presenter {
         fun loadDetails()

@@ -15,6 +15,14 @@ import kotlinx.android.synthetic.main.activity_bread_details.*
 import org.koin.android.ext.android.inject
 
 class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
+    override fun errorMaxPerItem(maxPerItem: Int) {
+        showError(getString(R.string.details_error_max_per_item, maxPerItem))
+    }
+
+    override fun errorMaxItemsCart(maxItemsCart: Int) {
+        showError(getString(R.string.details_error_max_tems_cart, maxItemsCart))
+
+    }
 
     override fun startLogin() {
         cutomStartActivityForResult<LoginActivity>(LoginActivity.rcSignIn)
@@ -37,19 +45,13 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
         presenter.memoryStore = memoryStore
         presenter.sharedPref = sharedPref
 
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
         presenter.loadDetails()
-    }
-
-    override fun onNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bread_details)
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         bOrder.setOnClickListener {
             presenter.orderBread()

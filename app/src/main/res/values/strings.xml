@@ -1,10 +1,25 @@
 <resources>
+    <!-- app name -->
     <string name="app_name">Order Bread</string>
-    <string name="bread_list_item_thumb_desc">Imagem do pão</string>
+
+    <!-- base activity and toolbar -->
     <string name="base_dialog_erro">Algo de errado aconteceu</string>
-    <string name="bread_list_title">Order Bread</string>
-    <string name="toolbar_back_desc">botão voltar</string>
+
+    <!-- carrossel (CustomDots) component -->
     <string name="page_bread_img_desc">foto do pão</string>
+
+    <!-- counter component -->
+    <string name="custom_counter_minus">-</string>
+    <string name="custom_counter_plus">+</string>
+    <string name="custom_counter_delete">X</string>
+
+    <!-- bread list -->
+    <string name="bread_list_item_thumb_desc">Imagem do pão</string>
+    <string name="bread_list_title">Order Bread</string>
+    <string name="bread_list_cart_button">Total de itens no carrinho: %d</string>
+    <string name="bread_list_cart_button_ico_desc">ícone de um carrinho de compras</string>
+
+    <!-- details -->
     <string name="details_description">Descrição</string>
     <string name="details_price">Preço</string>
     <string name="details_combinations">Combina com</string>
@@ -17,10 +32,20 @@
     <string name="details_nutritional_table_desc">Tabela contendo os valores</string>
     <string name="details_price_value">R$ %s</string>
     <string name="details_order">Encomendar</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="details_error_max_per_item">
+        Você pode somente adicionar no máximo %d pães de cada tipo. 
+        Isso acontece devido a nossa capacidade de atender as encomendas.
+    </string>
+    <string name="details_error_max_tems_cart">
+        Você pode somente adicionar no máximo %d itens no carrinho. 
+        Isso acontece devido a nossa capacidade de atender as encomendas.
+    </string>
+
+    <!-- login -->
+    <string name="login_title">Login</string>
     <string name="login_error_code">Erro ao efetuar login, tente mais tarde. Código: %s</string>
 
-    <!-- Strings related to login -->
+    <!-- firebase UI -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -31,6 +56,15 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="login_error_canceled">Login cancelado</string>
-    <string name="bread_list_cart_button">Total de itens no carrinho: %d</string>
-    <string name="bread_list_cart_button_ico_desc">ícone de um carrinho de compras</string>
+
+    <!-- cart -->
+    <string name="cart_title">Carrinho de compras</string>
+    <string name="cart_item_bread_desc">Imagem do pão que foi adicionado ao carrinho</string>
+    <string name="cart_button_checkout">Efetuar o pagamento do total: R$ %s</string>
+    <string name="cart_item_price">Unidade: R$ %s</string>
+    <string name="cart_item_total">Total do item: R$ %s</string>
+    <string name="cart_error_max_per_item">
+        Você pode somente adicionar no máximo %d pães de cada tipo. 
+        Isso acontece devido a nossa capacidade de atender as encomendas.
+    </string>
 </resources>

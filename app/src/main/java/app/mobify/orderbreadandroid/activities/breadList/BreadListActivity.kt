@@ -6,6 +6,7 @@ import android.view.View
 import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.activities.breadDetails.BreadDetailsActivity
+import app.mobify.orderbreadandroid.activities.cart.CartActivity
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.repository.Repository
@@ -24,7 +25,6 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bread_list)
-        actionBar.title = getString(R.string.bread_list_title)
 
         rvBreads.layoutManager = GridLayoutManager(this, 2)
         progress = pbLoading
@@ -66,6 +66,6 @@ class BreadListActivity : BaseActivity(), BreadListContract.View {
     }
 
     override fun showCartActivity() {
-
+        cutomStartActivity(CartActivity::class.java)
     }
 }

@@ -4,4 +4,6 @@ import app.mobify.orderbreadandroid.api.models.Bread
 
 interface MemoryStoreContract {
     var bread: Bread
+    var maxPerItem: Int
+    var maxItemsCart: Int
 }

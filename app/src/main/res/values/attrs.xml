@@ -5,4 +5,6 @@
         <attr name="cib_text" format="string"/>
         <attr name="cib_contentDescription" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomCounter"/>
 </resources>
