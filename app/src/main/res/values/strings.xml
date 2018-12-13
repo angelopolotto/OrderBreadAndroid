@@ -37,7 +37,7 @@
         Isso acontece devido a nossa capacidade de atender as encomendas.
     </string>
     <string name="details_error_max_tems_cart">
-        Você pode somente adicionar no máximo %d itens no carrinho. 
+        Você pode somente adicionar no máximo %d itens de cada tipo no carrinho.
         Isso acontece devido a nossa capacidade de atender as encomendas.
     </string>
 
