@@ -77,4 +77,8 @@
     <string name="checkout_date_get_order">Previsão da retirada</string>
     <string name="checkout_date_get_order_value">%s às %s</string>
     <string name="checkout_pay">Pagar</string>
+    <string name="checkout_get_location_error">Não foi possível obter a sua localização, tente mais tarde.</string>
+    <string name="checkout_get_location_permission_denied">Você precisa permitir utilizar sua localização para
+        prosseguir
+    </string>
 </resources>

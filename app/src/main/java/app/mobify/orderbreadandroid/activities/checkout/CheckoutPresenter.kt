@@ -11,6 +11,20 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     lateinit var memoryStore: MemoryStoreContract
 
     override fun loadData() {
+        //gerar o resumo
+        //gerar o total a ser pago
+        //obter a localização
+        //obter se atende na localização do cliente
+        //obter os cartões salvos a shared
+        //obter data do pedido
+        //obter previsão de entrega
+    }
 
+    override fun checkout() {
+        //salvar no shared pref o pedido
+        //salvar no backend o pedido
+        //proceder o pagamento com a cielo
+        //salvar no shared o pagamento
+        //salvar pagamento aprovado no backend
     }
 }
