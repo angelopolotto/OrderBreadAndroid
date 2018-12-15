@@ -11,10 +11,31 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     lateinit var memoryStore: MemoryStoreContract
 
     override fun loadData() {
-        //gerar o resumo
-        //gerar o total a ser pago
+        val cart = sharedPref.getCart()
+
+        cart?.let {
+            //gerar o resumo
+            var resume = ""
+            it.breads.forEach { resume += "${it.quantity} x ${it.name} = R$ ${it.total}\n" }
+
+            //gerar o total a ser pago
+            val total = cart.total
+
+        } ?: run {
+            view.showCartError()
+            return
+        }
+
         //obter a localização
-        //obter se atende na localização do cliente
+        view.getLocation({ lat: Double, long: Double ->
+            //obter se atende na localização do cliente
+            repository.allowCustomerLocation(lat, long) {
+
+            }
+        }) {
+            view.showGetLocationError()
+        }
+
         //obter os cartões salvos a shared
         //obter data do pedido
         //obter previsão de entrega

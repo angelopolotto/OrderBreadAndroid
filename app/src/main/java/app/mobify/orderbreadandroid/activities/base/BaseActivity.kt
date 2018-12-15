@@ -15,6 +15,34 @@ abstract class BaseActivity : Activity(), BaseContract.View {
         showError(message, null)
     }
 
+    override fun showInfo(title: String, message: String, okCalback: (() -> Unit)?) {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle(title) // O Titulo da notificação
+        alertDialog.setMessage(message) // a mensagem ou alerta
+        alertDialog.setPositiveButton("Ok") { _, _ -> okCalback?.invoke() }
+
+        val dialog = alertDialog.create()
+
+        dialog.show()
+
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
+    }
+
+    override fun showInfo(message: String, okCalback: (() -> Unit)?) {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle(R.string.base_dialog_info) // O Titulo da notificação
+        alertDialog.setMessage(message) // a mensagem ou alerta
+        alertDialog.setPositiveButton("Ok") { _, _ -> okCalback?.invoke() }
+
+        val dialog = alertDialog.create()
+
+        dialog.show()
+
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
+    }
+
     override fun showError(message: String, okCalback: (() -> Unit)?) {
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle(R.string.base_dialog_erro) // O Titulo da notificação

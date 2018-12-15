@@ -81,4 +81,9 @@
     <string name="checkout_get_location_permission_denied">Você precisa permitir utilizar sua localização para
         prosseguir
     </string>
+    <string name="base_dialog_info">Informação</string>
+    <string name="checkout_permission_title">Permissão para acessar sua localização</string>
+    <string name="checkout_permission_message">Permissão para acessar sua localização é necessária para analizarmos se
+        possímos locais de retirada na sua cidade.
+    </string>
 </resources>

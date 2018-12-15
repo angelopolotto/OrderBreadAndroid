@@ -1,3 +1,5 @@
 package app.mobify.orderbreadandroid.api.models
 
-class Cart (var breads: MutableList<Bread>)
+import java.math.BigDecimal
+
+class Cart(var breads: MutableList<Bread>, var total: BigDecimal)

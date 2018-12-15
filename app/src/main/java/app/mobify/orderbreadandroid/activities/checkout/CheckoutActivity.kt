@@ -42,9 +42,10 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
         if (Permissions.checkLocationPermission(this)) {
             presenter.loadData()
         } else {
-//            .withTitle("Permissão para acessar sua localização")
-//            .withMessage("Permissão para acessar sua localização é necessária para analizarmos se possímos locais de retirada na sua cidade.")
-            Permissions.requestLocationPermission(this)
+            showInfo(
+                getString(R.string.checkout_permission_title),
+                getString(R.string.checkout_permission_message)
+            ) { Permissions.requestLocationPermission(this) }
         }
 
     }

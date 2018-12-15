@@ -6,5 +6,7 @@ interface BaseContract {
         fun showError(message: String, okCalback: (() -> Unit)?)
         fun showProgress()
         fun hideProgress()
+        fun showInfo(message: String, okCalback: (() -> Unit)?)
+        fun showInfo(title: String, message: String, okCalback: (() -> Unit)?)
     }
 }
