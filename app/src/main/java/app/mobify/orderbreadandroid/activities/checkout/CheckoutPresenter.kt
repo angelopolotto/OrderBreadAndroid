@@ -29,16 +29,18 @@ class CheckoutPresenter : CheckoutContract.Presenter {
         //obter a localização
         view.getLocation({ lat: Double, long: Double ->
             //obter se atende na localização do cliente
-            repository.allowCustomerLocation(lat, long) {
-
+            repository.allowCustomerLocation(lat, long) { allow: Boolean, error: String ->
+                if (allow) {
+                    //obter os cartões salvos a shared
+                    //obter data do pedido
+                    //obter previsão de entrega
+                } else {
+                    view.showError(error)
+                }
             }
         }) {
             view.showGetLocationError()
         }
-
-        //obter os cartões salvos a shared
-        //obter data do pedido
-        //obter previsão de entrega
     }
 
     override fun checkout() {
