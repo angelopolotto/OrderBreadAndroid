@@ -1,6 +1,6 @@
 package app.mobify.orderbreadandroid.activities.login
 
-import app.mobify.orderbreadandroid.api.models.User
+import app.mobify.orderbreadandroid.api.models.user.Profile
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPrefContract
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseUser
@@ -15,14 +15,14 @@ class LoginPresenter: LoginContract.Presenter {
             if (it.isSuccessful) {
                 val idToken = it.result!!.token
                 if (idToken != null) {
-                    val user = User(
+                    val user = Profile(
                         userFirebase.uid,
                         userFirebase.email ?: "Email not informed",
                         userFirebase.displayName ?: "Name not informed",
                         userFirebase.photoUrl.toString(),
                         idToken
                     )
-                    sharedPref.saveUser(user)
+                    sharedPref.saveProfile(user)
                     view.loginSucceful()
                 } else {
                     view.loginError("Problem to receive the token")

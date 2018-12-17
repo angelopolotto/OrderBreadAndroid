@@ -21,9 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             buildConfigField "String", "SERVER_URL", '"http://orderbread.app.polotto.cloud"'
+            buildConfigField "String", "CIELO_URL", '"https://api.cieloecommerce.cielo.com.br/"'
+            buildConfigField "String", "MERCHANT_ID", '"5eb5c84f-d0f2-4a1e-8331-9176a7439919"'
+            buildConfigField "String", "MERCHANT_KEY", '"FQOWCKJJFDAKEMGKAIDAOYLBDMDETIKXDPWAIDGL"'
         }
         debug {
-            buildConfigField "String", "SERVER_URL", '"http://orderbread.app.polotto.cloud"'
+            buildConfigField "String", "SERVER_URL", '"https://orderbread.herokuapp.com"'
+            buildConfigField "String", "CIELO_URL", '"https://apisandbox.cieloecommerce.cielo.com.br"'
+            buildConfigField "String", "MERCHANT_ID", '"5eb5c84f-d0f2-4a1e-8331-9176a7439919"'
+            buildConfigField "String", "MERCHANT_KEY", '"FQOWCKJJFDAKEMGKAIDAOYLBDMDETIKXDPWAIDGL"'
         }
     }
 }

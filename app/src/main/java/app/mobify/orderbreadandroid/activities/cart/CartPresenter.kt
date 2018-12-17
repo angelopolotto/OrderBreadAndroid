@@ -1,7 +1,7 @@
 package app.mobify.orderbreadandroid.activities.cart
 
 import app.mobify.orderbreadandroid.api.models.Bread
-import app.mobify.orderbreadandroid.api.models.Cart
+import app.mobify.orderbreadandroid.api.models.user.Cart
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStoreContract
 import app.mobify.orderbreadandroid.utils.repository.RepositoryContract
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPrefContract

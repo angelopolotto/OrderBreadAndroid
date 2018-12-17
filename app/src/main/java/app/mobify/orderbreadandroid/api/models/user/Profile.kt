@@ -1,6 +1,6 @@
-package app.mobify.orderbreadandroid.api.models
+package app.mobify.orderbreadandroid.api.models.user
 
-data class User(
+data class Profile(
     val uid: String,
     val email: String,
     val name: String,

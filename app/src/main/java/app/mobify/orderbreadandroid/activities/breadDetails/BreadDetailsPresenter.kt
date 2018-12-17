@@ -15,9 +15,9 @@ class BreadDetailsPresenter: BreadDetailsContract.Presenter {
     }
 
     override fun orderBread(onActivityResult: Boolean) {
-        if (sharedPref.getUser() == null && !onActivityResult) {
+        if (sharedPref.getProfile() == null && !onActivityResult) {
             view.startLogin()
-        } else if (sharedPref.getUser() != null) {
+        } else if (sharedPref.getProfile() != null) {
             sharedPref.addToCart(memoryStore.bread, memoryStore.maxPerItem, memoryStore.maxItemsCart,
                 success = { view.addedToCart() },
                 errorMaxPerItem = { view.errorMaxPerItem(memoryStore.maxPerItem) },

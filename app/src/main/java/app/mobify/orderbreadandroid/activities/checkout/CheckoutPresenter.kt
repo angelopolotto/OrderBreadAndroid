@@ -1,5 +1,6 @@
 package app.mobify.orderbreadandroid.activities.checkout
 
+import app.mobify.orderbreadandroid.api.models.user.Wallet
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStoreContract
 import app.mobify.orderbreadandroid.utils.repository.RepositoryContract
 import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPrefContract
@@ -10,10 +11,12 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     lateinit var view: CheckoutContract.View
     lateinit var memoryStore: MemoryStoreContract
 
+    private var wallet: Wallet = Wallet(mutableListOf())
+
     override fun loadData() {
         val cart = sharedPref.getCart()
 
-        cart?.let {
+        cart.let {
             //gerar o resumo
             var resume = ""
             it.breads.forEach { resume += "${it.quantity} x ${it.name} = R$ ${it.total}\n" }
@@ -21,9 +24,6 @@ class CheckoutPresenter : CheckoutContract.Presenter {
             //gerar o total a ser pago
             val total = cart.total
 
-        } ?: run {
-            view.showCartError()
-            return
         }
 
         //obter a localização
@@ -32,6 +32,10 @@ class CheckoutPresenter : CheckoutContract.Presenter {
             repository.allowCustomerLocation(lat, long) { allow: Boolean, error: String ->
                 if (allow) {
                     //obter os cartões salvos a shared
+                    wallet = sharedPref.getWallet()
+                    view.showWallet(wallet)
+
+
                     //obter data do pedido
                     //obter previsão de entrega
                 } else {
