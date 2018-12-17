@@ -39,9 +39,7 @@ object CartLogic {
             bread.quantity = 1
             cart.breads.add(bread)
         }
-        cart.total = cart.breads.fold(BigDecimal.ZERO) { acc, bread -> calculateItemTotalPrice(bread).add(acc) } ?:
-                BigDecimal(0)
-
+        calculateTotal(cart)
         success?.invoke(cart)
     }
 
@@ -56,6 +54,7 @@ object CartLogic {
             if (cart.breads.isNotEmpty()) {
                 val filtered = cart.breads.filter { it.id == bread.id }
                 filtered[0].quantity = bread.quantity
+                calculateTotal(cart)
                 success?.invoke(cart)
             }
         } else {
@@ -73,6 +72,7 @@ object CartLogic {
             if (cart.breads.isNotEmpty()) {
                 val filtered = cart.breads.filter { it.id == bread.id }
                 cart.breads.remove(filtered[0])
+                calculateTotal(cart)
                 success?.invoke(cart)
             }
         } else {
@@ -80,14 +80,24 @@ object CartLogic {
         }
     }
 
-    fun getCart(cartJson: String?, gson: Gson?, success: ((cart: Cart) -> Unit)? = null) {
+    fun getCart(cartJson: String?, gson: Gson?, success: ((cart: Cart) -> Unit)? = null): Cart {
         val cart = gson?.fromJson(cartJson, Cart::class.java)
         cart?.let {
             success?.invoke(it)
+            return it
         } ?: run {
-            cart = Cart(mutableListOf(), BigDecimal.ZERO)
-
+            val cartNew = Cart(mutableListOf(), BigDecimal.ZERO)
+            success?.invoke(cartNew)
+            return cartNew
         }
+    }
+
+    private fun calculateTotal(cart: Cart) {
+        cart.total = cart.breads.fold(BigDecimal.ZERO) { acc, breadItem ->
+            val totalItem = calculateItemTotalPrice(breadItem)
+            breadItem.total = totalItem
+            acc.add(totalItem)
+        } ?: BigDecimal(0)
     }
 
     private fun calculateItemTotalPrice(item: Bread): BigDecimal {

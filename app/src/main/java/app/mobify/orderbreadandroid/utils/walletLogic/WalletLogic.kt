@@ -66,4 +66,16 @@ object WalletLogic {
             error?.invoke()
         }
     }
+
+    fun getWallet(cartJson: String?, gson: Gson?, success: ((cart: Cart) -> Unit)? = null): Cart {
+        val cart = gson?.fromJson(cartJson, Cart::class.java)
+        cart.let {
+            success?.invoke(it)
+            return it
+        } ?: run {
+            val cartNew = Cart(mutableListOf(), BigDecimal.ZERO)
+            success?.invoke(cartNew)
+            return cartNew
+        }
+    }
 }

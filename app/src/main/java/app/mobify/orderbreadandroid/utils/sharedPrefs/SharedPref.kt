@@ -75,11 +75,12 @@ class SharedPref : SharedPrefContract {
     }
 
     override fun getCart(): Cart {
-        val cart = gson?.fromJson(
-            sharedPref?.getString(cartKey, null),
-            Cart::class.java)
-        CartLogic.getCart(cart)
-        return cart
+        val cartJson = sharedPref?.getString(cartKey, null)
+        return CartLogic.getCart(cartJson, gson) {
+            val edit = sharedPref?.edit()
+            edit?.putString(cartKey, gson?.toJson(it))
+            edit?.apply()
+        }
     }
 
     override fun addToWallet(
@@ -114,7 +115,7 @@ class SharedPref : SharedPrefContract {
         }
     }
 
-    override fun getWallet(): Wallet? {
+    override fun getWallet(): Wallet {
         val wallet = gson?.fromJson(
             sharedPref?.getString(walletKey, null),
             Wallet::class.java
