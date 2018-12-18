@@ -67,15 +67,15 @@ object WalletLogic {
         }
     }
 
-    fun getWallet(cartJson: String?, gson: Gson?, success: ((cart: Cart) -> Unit)? = null): Cart {
-        val cart = gson?.fromJson(cartJson, Cart::class.java)
-        cart.let {
+    fun getWallet(walletJson: String?, gson: Gson?, success: ((wallet: Wallet) -> Unit)? = null): Wallet {
+        val wallet = gson?.fromJson(walletJson, Wallet::class.java)
+        wallet?.let {
             success?.invoke(it)
             return it
         } ?: run {
-            val cartNew = Cart(mutableListOf(), BigDecimal.ZERO)
-            success?.invoke(cartNew)
-            return cartNew
+            val walletNew = Wallet(mutableListOf())
+            success?.invoke(walletNew)
+            return walletNew
         }
     }
 }

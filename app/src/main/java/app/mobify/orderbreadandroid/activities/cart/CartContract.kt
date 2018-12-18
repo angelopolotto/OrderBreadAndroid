@@ -9,6 +9,8 @@ interface CartContract {
         fun showTotalValue(total: BigDecimal)
         fun showCheckout()
         fun errorMaxPerItem(maxPerItem: Int)
+        fun errorRemoveItem()
+        fun errorUpdateTotal()
     }
 
     interface Presenter {

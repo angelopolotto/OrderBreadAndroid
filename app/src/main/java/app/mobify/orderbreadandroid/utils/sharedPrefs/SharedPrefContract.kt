@@ -7,7 +7,7 @@ import app.mobify.orderbreadandroid.api.models.user.Profile
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 
 interface SharedPrefContract {
-    fun getProfile(): Profile
+    fun getProfile(): Profile?
     fun saveProfile(profile: Profile)
 
     fun addToCart(

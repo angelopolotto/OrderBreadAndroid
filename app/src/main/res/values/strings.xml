@@ -77,7 +77,10 @@
     <string name="checkout_date_get_order">Previsão da retirada</string>
     <string name="checkout_date_get_order_value">%s às %s</string>
     <string name="checkout_pay">Pagar</string>
-    <string name="checkout_get_location_error">Não foi possível obter a sua localização, tente mais tarde.</string>
+    <string name="checkout_get_location_error">
+        Não foi possível obter sua localização, por favor, verifique se o
+        serviço de localização do seu dipositivo está ligado e tente mais tarde.
+    </string>
     <string name="checkout_get_location_permission_denied">Você precisa permitir utilizar sua localização para
         prosseguir
     </string>
@@ -86,4 +89,5 @@
     <string name="checkout_permission_message">Permissão para acessar sua localização é necessária para analizarmos se
         possímos locais de retirada na sua cidade.
     </string>
+    <string name="checkout_resume_item">%s x %s = R$ %s</string>
 </resources>

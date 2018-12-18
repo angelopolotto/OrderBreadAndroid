@@ -14,30 +14,19 @@ class CartPresenter : CartContract.Presenter {
     lateinit var memoryStore: MemoryStoreContract
 
     private var cartItems: Cart? = null
-    private var total: BigDecimal = BigDecimal(0)
 
     override fun loadData() {
-        cartItems = sharedPref.getCart()
-        cartItems?.let {
-            view.showCartItems(it.breads)
-            calculateAndShowTotal()
-        }
+        updateCartTotalList()
     }
 
     override fun removeItem(item: Bread) {
-        sharedPref.removeFromCart(item)
-        loadData()
+        sharedPref.removeFromCart(item) { view.errorRemoveItem() }
+        updateCartTotalList()
     }
 
     override fun updateTotalValue(item: Bread) {
-        sharedPref.updateFromCart(item)
-        calculateAndShowTotal()
-    }
-
-    private fun calculateAndShowTotal() {
-        total = cartItems?.breads?.fold(BigDecimal(0)) { acc, bread -> calculateItemTotalPrice(bread).add(acc) } ?:
-                BigDecimal(0)
-        view.showTotalValue(total)
+        sharedPref.updateFromCart(item) { view.errorUpdateTotal() }
+        updateCartTotalList(false)
     }
 
     override fun calculateItemTotalPrice(item: Bread): BigDecimal {
@@ -54,5 +43,14 @@ class CartPresenter : CartContract.Presenter {
 
     override fun maxValuePerItemError() {
         view.errorMaxPerItem(memoryStore.maxPerItem)
+    }
+
+    private fun updateCartTotalList(updateList: Boolean = true) {
+        cartItems = sharedPref.getCart()
+        cartItems?.let {
+            if (updateList)
+                view.showCartItems(it.breads)
+            view.showTotalValue(it.total)
+        }
     }
 }
