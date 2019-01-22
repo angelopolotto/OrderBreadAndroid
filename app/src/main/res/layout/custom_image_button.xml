@@ -12,6 +12,7 @@
             android:id="@+id/bClick"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:background="@color/fui_transparent"
             android:layout_alignTop="@+id/foreground"
             android:layout_alignBottom="@id/foreground"
             android:layout_alignEnd="@id/foreground"
@@ -19,13 +20,16 @@
     <RelativeLayout
             android:id="@id/foreground"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor">
         <TextView
                 android:id="@+id/tvText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="@color/textWhite"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_primary"
                 toos:text="Total de itens no carrinho: %s"
                 toos:ignore="RelativeOverlap"/>
         <ImageView

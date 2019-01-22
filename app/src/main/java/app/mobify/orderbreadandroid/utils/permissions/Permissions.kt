@@ -100,9 +100,8 @@ class Permissions {
             }
 
             val newPermissions = arrayOfNulls<String>(list.size)
-            list.toTypedArray()
 
-            ActivityCompat.requestPermissions(activity, newPermissions, requestCode)
+            ActivityCompat.requestPermissions(activity, list.toArray(newPermissions), requestCode)
         }
 
         @Suppress("MemberVisibilityCanBePrivate")

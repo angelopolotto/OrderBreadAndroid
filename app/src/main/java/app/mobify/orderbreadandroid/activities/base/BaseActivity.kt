@@ -1,14 +1,14 @@
 package app.mobify.orderbreadandroid.activities.base
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import app.mobify.orderbreadandroid.R
 
-abstract class BaseActivity : Activity(), BaseContract.View {
+abstract class BaseActivity : AppCompatActivity(), BaseContract.View {
     var progress: ProgressBar? = null
 
     override fun showError(message: String) {
@@ -65,8 +65,8 @@ abstract class BaseActivity : Activity(), BaseContract.View {
         progress?.visibility = GONE
     }
 
-    override fun onNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        return true
+        return super.onSupportNavigateUp()
     }
 }

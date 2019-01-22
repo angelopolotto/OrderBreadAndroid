@@ -51,7 +51,7 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bread_details)
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bOrder.setOnClickListener {
             presenter.orderBread()
@@ -59,7 +59,7 @@ class BreadDetailsActivity : BaseActivity(), BreadDetailsContract.View {
     }
 
     override fun showDetails(bread: Bread) {
-        actionBar.title = bread.name
+        supportActionBar?.title = bread.name
         cdIndicator.configureViewPager(vpImages, BreadDetailsPagerAdapter(this, bread.images))
         tvName.text = bread.name
         tvPrice.text = resources.getString(R.string.details_price_value, bread.price)

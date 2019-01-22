@@ -4,6 +4,7 @@ import app.mobify.orderbreadandroid.activities.base.BaseContract
 import app.mobify.orderbreadandroid.api.endpoints.CieloEndpoint
 import app.mobify.orderbreadandroid.api.endpoints.OrderBreadEndpoint
 import app.mobify.orderbreadandroid.api.models.Bread
+import app.mobify.orderbreadandroid.api.models.checkout.OrderVerification
 import app.mobify.orderbreadandroid.utils.rxUtils.applySchedulers
 import io.reactivex.disposables.Disposable
 
@@ -35,8 +36,11 @@ class Repository : RepositoryContract {
                     )
     }
 
-    override fun allowCustomerLocation(lat: Double, long: Double, function: (allow: Boolean, error: String) -> Unit) {
-
+    override fun allowCustomerLocation(
+        lat: Double,
+        long: Double,
+        result: (orderVerification: OrderVerification) -> Unit
+    ) {
     }
 
 

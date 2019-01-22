@@ -15,7 +15,6 @@ import app.mobify.orderbreadandroid.utils.sharedPrefs.SharedPref
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_checkout.*
-import kotlinx.android.synthetic.main.cart_item.*
 import org.koin.android.ext.android.inject
 import java.math.BigDecimal
 import java.util.*
@@ -32,7 +31,7 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
@@ -52,9 +51,10 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
             showInfo(
                 getString(R.string.checkout_permission_title),
                 getString(R.string.checkout_permission_message)
-            ) { Permissions.requestLocationPermission(this) }
+            ) {
+                Permissions.requestLocationPermission(this)
+            }
         }
-
     }
 
     override fun onPause() {

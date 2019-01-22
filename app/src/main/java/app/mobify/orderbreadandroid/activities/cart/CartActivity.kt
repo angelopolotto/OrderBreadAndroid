@@ -15,6 +15,14 @@ import org.koin.android.ext.android.inject
 import java.math.BigDecimal
 
 class CartActivity : BaseActivity(), CartContract.View {
+    override fun errorRemoveItem() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun errorUpdateTotal() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private val repository: Repository by inject()
     private val presenter: CartPresenter by inject()
     private val sharedPref: SharedPref by inject()
@@ -26,7 +34,7 @@ class CartActivity : BaseActivity(), CartContract.View {
 
         rvCartItems.layoutManager = LinearLayoutManager(this)
 
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bCheckout.setOnClickListener {
             presenter.checkout()
