@@ -1,6 +1,7 @@
 package app.mobify.orderbreadandroid.activities.checkout
 
 import app.mobify.orderbreadandroid.api.models.checkout.OrderVerification
+import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStoreContract
 import app.mobify.orderbreadandroid.utils.repository.RepositoryContract
@@ -14,6 +15,8 @@ class CheckoutPresenter : CheckoutContract.Presenter {
 
     private var wallet: Wallet = Wallet(mutableListOf())
     private lateinit var orderVerification: OrderVerification
+
+    private lateinit var currentCreditCard: CreditCard
 
     override fun loadData() {
         sharedPref.getCart().let {
@@ -43,8 +46,18 @@ class CheckoutPresenter : CheckoutContract.Presenter {
 
                     //obter os cartões salvos a shared
                     wallet = sharedPref.getWallet()
-                    view.showWallet(wallet)
-
+                    //obtem o cartão atual selecionado
+                    wallet.creditCards.apply {
+                        forEach {
+                            if (it.default) {
+                                currentCreditCard = it
+                                view.showWallet(currentCreditCard)
+                            }
+                        }
+                        if (isEmpty()) {
+                            view.showEmptyWallet()
+                        }
+                    }
                     view.showOrderDate(orderVerification.orderDate)
                     view.showDateToGetOrder(orderVerification.dateToGetOrder)
                 } else {

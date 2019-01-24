@@ -6,8 +6,8 @@ import android.os.Bundle
 import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.api.models.Bread
+import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Address
-import app.mobify.orderbreadandroid.api.models.user.Wallet
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.permissions.Permissions
 import app.mobify.orderbreadandroid.utils.repository.Repository
@@ -91,8 +91,12 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
         tvResume.text = resume
     }
 
-    override fun showWallet(wallet: Wallet) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showWallet(creditCard: CreditCard) {
+        tvCreditCard.text = getString(R.string.checkout_credit_card_value, creditCard.cardNumber.takeLast(4))
+    }
+
+    override fun showEmptyWallet() {
+        tvCreditCard.text = getString(R.string.checkout_credit_card_empty)
     }
 
     override fun showTotal(total: BigDecimal) {

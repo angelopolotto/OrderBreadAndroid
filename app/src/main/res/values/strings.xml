@@ -90,4 +90,6 @@
         possímos locais de retirada na sua cidade.
     </string>
     <string name="checkout_resume_item">%s x %s = R$ %s</string>
+    <string name="checkout_credit_card_value">XXXX.XXXX.XXXX.%s</string>
+    <string name="checkout_credit_card_empty">Cadastre um cartão para continuar</string>
 </resources>

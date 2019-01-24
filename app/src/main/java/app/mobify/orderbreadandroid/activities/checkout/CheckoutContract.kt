@@ -1,8 +1,8 @@
 package app.mobify.orderbreadandroid.activities.checkout
 
 import app.mobify.orderbreadandroid.api.models.Bread
+import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Address
-import app.mobify.orderbreadandroid.api.models.user.Wallet
 import java.math.BigDecimal
 import java.util.*
 
@@ -15,7 +15,8 @@ interface CheckoutContract {
 
         fun showErrorGeneric(error: String)
         fun showResume(resume: String)
-        fun showWallet(wallet: Wallet)
+        fun showWallet(creditCard: CreditCard)
+        fun showEmptyWallet()
         fun showTotal(total: BigDecimal)
         fun showLocationsToGetOrder(addressesToGetOrder: List<Address>)
         fun showOrderDate(orderDate: Date)

@@ -5,6 +5,7 @@ package app.mobify.orderbreadandroid.api.models.cielo
  */
 open class CreditCard {
     lateinit var cardNumber: String
+    var default: Boolean = false
     lateinit var cardHolder: String
     lateinit var securityCode: String
     lateinit var expirationDate: String
@@ -45,6 +46,4 @@ open class CreditCard {
     override fun toString(): String {
         return cardNumber.replaceRange(0, cardNumber.length.toInt() - 4, "**** ")
     }
-
-
 }
