@@ -71,18 +71,83 @@
                     style="@style/TextViewSecondary"/>
 
             <TextView
-                    android:text="@string/checkout_place_to_get_order"
+                    android:text="@string/checkout_shippingTypeTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvShippingType"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTotalPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalPrice"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvShippingTypeValue"
+                    style="@style/TextViewSecondary"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShippingType"
+                    tools:text="Retirar no local"/>
+
+            <app.mobify.orderbreadandroid.widgets.CustomImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShippingTypeValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    app:cib_text="@string/checkout_button_shipping_type"
+                    app:cib_src="@mipmap/baseline_local_shipping_white_48"
+                    android:id="@+id/cibShippingType"/>
 
             <TextView
+                    android:text="@string/checkout_local_shipping_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLocalShipping"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cibShippingType"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:id="@+id/tvLocalShippingValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLocalShipping"
+                    style="@style/TextViewSecondary"
+                    tools:text="Address: R. Mal. Deodoro, 708 - Loja B - Centro, Curitiba - PR, 80010-010 Hours:  Open ⋅ Closes 7:30PM    Phone: (41) 3019-3699"/>
+
+            <app.mobify.orderbreadandroid.widgets.CustomImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    app:cib_text="@string/checkout_button_local_shipping"
+                    app:cib_src="@mipmap/baseline_place_white_48"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLocalShippingValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:id="@+id/cibLocalShipping"/>
+
+            <TextView
+                    android:text="@string/checkout_place_to_get_order"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvPlaceGetOrder"
@@ -90,19 +155,30 @@
                     android:layout_marginStart="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cibLocalShipping"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPlaceGetOrderValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPlaceGetOrder"
                     style="@style/TextViewSecondary"
                     tools:text="Address: R. Mal. Deodoro, 708 - Loja B - Centro, Curitiba - PR, 80010-010 Hours:  Open ⋅ Closes 7:30PM    Phone: (41) 3019-3699"/>
 
             <app.mobify.orderbreadandroid.widgets.CustomImageButton
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    app:cib_text="Trocar local"
+                    app:cib_text="@string/checkout_button_place_get_order"
                     app:cib_src="@mipmap/baseline_place_white_48"
                     android:id="@+id/cibChangePlaceGetOrder"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPlaceGetOrder"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPlaceGetOrderValue"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +212,7 @@
             <app.mobify.orderbreadandroid.widgets.CustomImageButton
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    app:cib_text="Alterar cartão de crédito"
+                    app:cib_text="@string/checkout_button_change_credit_card"
                     app:cib_src="@mipmap/baseline_credit_card_white_48"
                     android:layout_marginTop="10dp"
                     app:layout_constraintTop_toBottomOf="@+id/tvCreditCard"

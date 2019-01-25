@@ -39,6 +39,8 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
     override fun onStart() {
         super.onStart()
 
+        var test = Locale.CANADA
+
         repository.base = this
         presenter.repository = repository
         presenter.sharedPref = sharedPref

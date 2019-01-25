@@ -92,4 +92,10 @@
     <string name="checkout_resume_item">%s x %s = R$ %s</string>
     <string name="checkout_credit_card_value">XXXX.XXXX.XXXX.%s</string>
     <string name="checkout_credit_card_empty">Cadastre um cartão para continuar</string>
+    <string name="checkout_shippingTypeTitle">Tipo de entrega</string>
+    <string name="checkout_local_shipping_title">Endereço de entrega</string>
+    <string name="checkout_button_shipping_type">Trocar tipo da entrega</string>
+    <string name="checkout_button_local_shipping">Trocar local</string>
+    <string name="checkout_button_place_get_order">Trocar local</string>
+    <string name="checkout_button_change_credit_card">Alterar cartão de crédito</string>
 </resources>
