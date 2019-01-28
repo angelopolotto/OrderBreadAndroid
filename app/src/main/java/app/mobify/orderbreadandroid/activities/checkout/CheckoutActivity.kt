@@ -7,7 +7,6 @@ import app.mobify.orderbreadandroid.R
 import app.mobify.orderbreadandroid.activities.base.BaseActivity
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
-import app.mobify.orderbreadandroid.api.models.user.Address
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStore
 import app.mobify.orderbreadandroid.utils.permissions.Permissions
 import app.mobify.orderbreadandroid.utils.repository.Repository
@@ -39,8 +38,6 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
     override fun onStart() {
         super.onStart()
 
-        var test = Locale.CANADA
-
         repository.base = this
         presenter.repository = repository
         presenter.sharedPref = sharedPref
@@ -57,6 +54,12 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
                 Permissions.requestLocationPermission(this)
             }
         }
+
+        cibShippingType.setOnClickListener { presenter.showShippingTypes() }
+        cibLocalShipping.setOnClickListener { presenter.showAddresses() }
+        cibChangePlaceGetOrder.setOnClickListener { presenter.showPlacesGetOrder() }
+        cibCreditCard.setOnClickListener { presenter.showListCreditCard() }
+        bPay.setOnClickListener { presenter.payOrder() }
     }
 
     override fun onPause() {
@@ -103,10 +106,6 @@ class CheckoutActivity : BaseActivity(), CheckoutContract.View {
 
     override fun showTotal(total: BigDecimal) {
         tvTotalPrice.text = getString(R.string.checkout_price_total_value, total)
-    }
-
-    override fun showLocationsToGetOrder(addressesToGetOrder: List<Address>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showOrderDate(orderDate: Date) {

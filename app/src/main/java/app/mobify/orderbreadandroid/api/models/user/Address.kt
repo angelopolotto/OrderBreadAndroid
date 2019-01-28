@@ -7,5 +7,6 @@ data class Address(
     var neighborhood: String,
     var state: String,
     var zipCode: String,
-    var country: String
+    var country: String,
+    var default: Boolean
 )

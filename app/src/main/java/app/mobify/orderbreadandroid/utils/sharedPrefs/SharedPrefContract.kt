@@ -3,12 +3,12 @@ package app.mobify.orderbreadandroid.utils.sharedPrefs
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Cart
-import app.mobify.orderbreadandroid.api.models.user.Profile
+import app.mobify.orderbreadandroid.api.models.user.User
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 
 interface SharedPrefContract {
-    fun getProfile(): Profile?
-    fun saveProfile(profile: Profile)
+    fun getUser(): User?
+    fun saveUser(profile: User)
 
     fun addToCart(
         bread: Bread, maxPerItem: Int, maxItemsCart: Int,

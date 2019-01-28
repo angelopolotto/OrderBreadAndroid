@@ -22,7 +22,7 @@ class LoginPresenter: LoginContract.Presenter {
                         userFirebase.photoUrl.toString(),
                         idToken
                     )
-                    sharedPref.saveProfile(user)
+                    sharedPref.saveUser(user)
                     view.loginSucceful()
                 } else {
                     view.loginError("Problem to receive the token")

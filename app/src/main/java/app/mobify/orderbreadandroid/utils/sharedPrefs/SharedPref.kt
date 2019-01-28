@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Cart
-import app.mobify.orderbreadandroid.api.models.user.Profile
+import app.mobify.orderbreadandroid.api.models.user.User
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 import app.mobify.orderbreadandroid.utils.cartLogic.CartLogic
 import app.mobify.orderbreadandroid.utils.walletLogic.WalletLogic
@@ -24,17 +24,17 @@ class SharedPref : SharedPrefContract {
         this.gson = builder.create()
     }
 
-    override fun getProfile(): Profile? {
+    override fun getUser(): User? {
         val user = gson?.fromJson(
             sharedPref?.getString(userKey, null),
-            Profile::class.java
+            User::class.java
         )
         return user
     }
 
-    override fun saveProfile(profile: Profile) {
+    override fun saveUser(user: User) {
         val edit = sharedPref?.edit()
-        edit?.putString(userKey, gson?.toJson(profile))
+        edit?.putString(userKey, gson?.toJson(user))
         edit?.apply()
     }
 

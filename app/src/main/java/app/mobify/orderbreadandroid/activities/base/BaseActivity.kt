@@ -8,6 +8,7 @@ import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import app.mobify.orderbreadandroid.R
 
+
 abstract class BaseActivity : AppCompatActivity(), BaseContract.View {
     var progress: ProgressBar? = null
 
@@ -29,11 +30,11 @@ abstract class BaseActivity : AppCompatActivity(), BaseContract.View {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
     }
 
-    override fun showInfo(message: String, okCalback: (() -> Unit)?) {
+    override fun showInfo(message: String, okCallback: (() -> Unit)?) {
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle(R.string.base_dialog_info) // O Titulo da notificação
         alertDialog.setMessage(message) // a mensagem ou alerta
-        alertDialog.setPositiveButton("Ok") { _, _ -> okCalback?.invoke() }
+        alertDialog.setPositiveButton("Ok") { _, _ -> okCallback?.invoke() }
 
         val dialog = alertDialog.create()
 
@@ -43,11 +44,11 @@ abstract class BaseActivity : AppCompatActivity(), BaseContract.View {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.textPrimary))
     }
 
-    override fun showError(message: String, okCalback: (() -> Unit)?) {
+    override fun showError(message: String, okCallback: (() -> Unit)?) {
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle(R.string.base_dialog_erro) // O Titulo da notificação
         alertDialog.setMessage(message) // a mensagem ou alerta
-        alertDialog.setPositiveButton("Ok") { _, _ -> okCalback?.invoke() }
+        alertDialog.setPositiveButton("Ok") { _, _ -> okCallback?.invoke() }
 
         val dialog = alertDialog.create()
 
@@ -63,6 +64,16 @@ abstract class BaseActivity : AppCompatActivity(), BaseContract.View {
 
     override fun hideProgress() {
         progress?.visibility = GONE
+    }
+
+    fun showMultiple(title: String, items: List<String>, okCallback: ((option: Int) -> Unit)?) {
+        val b = AlertDialog.Builder(this)
+        b.setTitle(title)
+        b.setItems(items.toTypedArray()) { dialog, which ->
+            dialog.dismiss()
+            okCallback?.invoke(which)
+        }
+        b.show()
     }
 
     override fun onSupportNavigateUp(): Boolean {

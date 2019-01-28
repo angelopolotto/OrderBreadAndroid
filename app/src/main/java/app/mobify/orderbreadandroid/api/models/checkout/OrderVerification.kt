@@ -6,7 +6,8 @@ import java.util.*
 data class OrderVerification(
     var allowLocation: Boolean,
     var errorLocation: String,
-    var addressesToGetOrder: List<Address>,
+    var shippingTypes: List<ShippingType>,
+    var addressesGetOrder: List<Address>,
     var orderDate: Date,
     var dateToGetOrder: Date
 )
