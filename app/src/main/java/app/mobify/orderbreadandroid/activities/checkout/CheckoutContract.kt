@@ -29,6 +29,8 @@ interface CheckoutContract {
         fun showAddressGetOrder(currentAddressToGetOrder: Address)
         fun showLocationsToGetOrder(currentAddressToGetOrder: Address, addressesToGetOrder: List<Address>)
         fun showEmptyAddress()
+        fun showShippingAddresses(currentShippingAddress: Address, shippingAddresses: List<Address>)
+        fun showErrorSaveOrder()
     }
     interface Presenter {
         fun loadData()

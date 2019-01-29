@@ -4,6 +4,8 @@ import app.mobify.orderbreadandroid.api.models.checkout.OrderVerification
 import app.mobify.orderbreadandroid.api.models.checkout.ShippingType
 import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Address
+import app.mobify.orderbreadandroid.api.models.user.Cart
+import app.mobify.orderbreadandroid.api.models.user.Order
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 import app.mobify.orderbreadandroid.utils.memoryStore.MemoryStoreContract
 import app.mobify.orderbreadandroid.utils.repository.RepositoryContract
@@ -20,11 +22,14 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     private lateinit var currentAddressToGetOrder: Address
     private lateinit var orderVerification: OrderVerification
     private lateinit var currentCreditCard: CreditCard
-    private lateinit var addressesShipping: List<Address>
+    private lateinit var shippingAddresses: List<Address>
     private lateinit var currentShippingAddress: Address
+    private lateinit var cart: Cart
+
 
     override fun loadData() {
-        sharedPref.getCart().let {
+        cart = sharedPref.getCart()
+        cart.let {
             //gerar o resumo
             var resume = ""
             it.breads.forEach { item -> resume += view.getResumeString(item) }
@@ -85,8 +90,8 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     }
 
     private fun setupShippingAddress() {
-        addressesShipping = sharedPref.getUser()?.addressesShipping ?: mutableListOf()
-        addressesShipping.apply {
+        shippingAddresses = sharedPref.getUser()?.addressesShipping ?: mutableListOf()
+        shippingAddresses.apply {
             forEach {
                 if (it.default) {
                     currentShippingAddress = it
@@ -121,7 +126,7 @@ class CheckoutPresenter : CheckoutContract.Presenter {
 
 
     override fun showAddresses() {
-        TODO()
+        view.showShippingAddresses(currentShippingAddress, shippingAddresses)
     }
 
     override fun showPlacesGetOrder() {
@@ -133,10 +138,31 @@ class CheckoutPresenter : CheckoutContract.Presenter {
     }
 
     override fun payOrder() {
+        //cria um novo pedido
+        val order = Order(
+            orderVerification.orderNumber,
+            cart.breads, cart.total, orderVerification.orderDate, currentShippingType
+        )
+
+        when (currentShippingType.type) {
+            ShippingType.Type.DELIVERY -> order.addressShipping = currentShippingAddress
+            ShippingType.Type.GET_ORDER -> order.addressGetOrder = currentAddressToGetOrder
+        }
+
         //salvar no shared pref o pedido
+        sharedPref.saveOrder(order)
+
         //salvar no backend o pedido
-        //proceder o pagamento com a cielo
-        //salvar no shared o pagamento
-        //salvar pagamento aprovado no backend
+        repository.saveOrder(order) { saved ->
+            if (saved) {
+                //proceder o pagamento com a cielo
+                repository.payment()
+
+                //salvar no shared o pagamento
+                //salvar pagamento aprovado no backend
+            } else {
+                view.showErrorSaveOrder()
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ package app.mobify.orderbreadandroid.utils.sharedPrefs
 import app.mobify.orderbreadandroid.api.models.Bread
 import app.mobify.orderbreadandroid.api.models.cielo.CreditCard
 import app.mobify.orderbreadandroid.api.models.user.Cart
+import app.mobify.orderbreadandroid.api.models.user.Order
 import app.mobify.orderbreadandroid.api.models.user.User
 import app.mobify.orderbreadandroid.api.models.user.Wallet
 
@@ -30,4 +31,5 @@ interface SharedPrefContract {
 
     fun updateFromWallet(creditCard: CreditCard, error: () -> Unit)
     fun removeFromWallet(creditCard: CreditCard, error: () -> Unit)
+    fun saveOrder(order: Order)
 }

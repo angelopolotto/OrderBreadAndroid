@@ -8,6 +8,7 @@ data class OrderVerification(
     var errorLocation: String,
     var shippingTypes: List<ShippingType>,
     var addressesGetOrder: List<Address>,
+    var orderNumber: String,
     var orderDate: Date,
     var dateToGetOrder: Date
 )
