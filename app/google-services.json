@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "555592366589",
+    "firebase_url": "https://orderbreadandroid.firebaseio.com",
+    "project_id": "orderbreadandroid",
+    "storage_bucket": "orderbreadandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555592366589:android:c6241272bf8d7d80",
+        "android_client_info": {
+          "package_name": "app.mobify.orderbreadandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555592366589-p6rusqbf59r1luucnijprvfhfjpa1itd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.mobify.orderbreadandroid",
+            "certificate_hash": "405e9a479a030a7615650579e60a958092850c1a"
+          }
+        },
+        {
+          "client_id": "555592366589-n1ivnpnb93p5qik0de8b5c1tqd9k4a1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.mobify.orderbreadandroid",
+            "certificate_hash": "83d6fb688d99e81cc89087ed65c26c1fe3515440"
+          }
+        },
+        {
+          "client_id": "555592366589-2sphfs0uutkru8eq48tj4s2uetmek7bq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM9CQmtLLYx9O9dzbEfVDbLv5jtCjfXRU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555592366589-2sphfs0uutkru8eq48tj4s2uetmek7bq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
